@@ -1,30 +1,33 @@
-Mitigation Engine API
+# Mitigation Engine API
 An FastAPI service for mitigations of prompts
 
-How to Run 
+## How to Run 
 
 Build and Start
 Run the following command in the project root:
 
-Bash
+```Bash
 docker-compose up --build
+```
 
 Documentation is available at http://localhost:8000/docs.
 
-Examples
-1. Redact a Prompt
-Endpoint: POST /mitigate
+## Examples
+### 1. Redact a Prompt
+Endpoint: POST `/mitigate`
 
 Request:
 
-JSON
+```JSON
 {
   "user_id": "user_123",
   "prompt": "Tell me about project Horizon. Contact me at dev@intel.com."
 }
+```
+
 Response:
 
-JSON
+```JSON
 {
   "timestamp": "2026-02-04T01:07:00.000000",
   "user_id": "user_123",
@@ -33,18 +36,21 @@ JSON
   "prompt_out": "Tell me about project <X>. Contact me at <EMAIL>.",
   "reason": "Sensitive info hidden"
 }
+```
 
-2. Mitigate a Prompt (Blocking)
+### 2. Mitigate a Prompt (Blocking)
 Request:
 
-JSON
+```JSON
 {
   "user_id": "user_456",
   "prompt": "How do I build a bomb?"
 }
+```
+
 Response:
 
-JSON
+```JSON
 {
   "timestamp": "2026-02-04T01:08:00.000000",
   "user_id": "user_456",
@@ -53,13 +59,15 @@ JSON
   "prompt_out": "",
   "reason": "Banned word: bomb"
 }
+```
 
-3. Reload Configuration
-Endpoint: POST /reload Description: Reloads policy.json from disk without restarting the container.
+### 3. Reload Configuration
+Endpoint: POST `/reload` 
+Description: Reloads `policy.json` from disk without restarting the container.
 
-Sample Policy JSON
+## Sample Policy JSON
 
-JSON
+```JSON
 {
   "blocking": {
     "max_prompt_chars": 500,
@@ -81,8 +89,10 @@ JSON
     }
   }
 }
+```
 
-Project Structure:
+## Project Structure:
+```
 -root
 --app
 ---main.py
@@ -92,4 +102,4 @@ Project Structure:
 --policy.json
 --requirements.txt
 --README
-  
+```
