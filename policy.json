@@ -1,0 +1,40 @@
+{
+  "blocking": {
+    "max_prompt_chars": 500,
+    "banned_keywords": ["malware", "exploit", "intercept", "bomb"]
+  },
+  "redaction_rules": {
+    "secret_names": {
+      "projects": {
+        "names": ["Horizon", "Keystone", "Catalyst", "Velocity"],
+        "stamp": "<X>"
+      },
+      "suppliers": {
+        "names": ["Intel", "Nvidia"],
+        "stamp": "<XX>"
+      }
+    },
+    "toggles": {
+      "emails": {
+        "enabled": true,
+        "regex": "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}",
+        "stamp": "<EMAIL>"
+      },
+      "phones": {
+        "enabled": true,
+        "regex": "(\\+972|0)5\\d{8}",
+        "stamp": "<PHONE>"
+      },
+      "secrets": {
+        "enabled": true,
+        "regex": "SECRET\\{(.+)\\}",
+        "stamp": "<SECRET>"
+      },
+      "credit_cards": {
+        "enabled": false,
+        "regex": "4\\d{15}",
+        "stamp": "<CREDIT_CARD>"
+      }
+    }
+  }
+}
