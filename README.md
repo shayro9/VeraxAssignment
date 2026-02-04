@@ -3,7 +3,6 @@ An FastAPI service for mitigations of prompts
 
 ## How to Run 
 
-Build and Start
 Run the following command in the project root:
 
 ```Bash
@@ -63,6 +62,7 @@ Response:
 
 ### 3. Reload Configuration
 Endpoint: POST `/reload` 
+
 Description: Reloads `policy.json` from disk without restarting the container.
 
 ## Sample Policy JSON
